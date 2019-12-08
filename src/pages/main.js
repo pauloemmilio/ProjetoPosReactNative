@@ -5,24 +5,24 @@ import api from '../services/api';
 
 export default function Main() {
 
-    const [users, setUsers] = useState([]);
+    const [pets, setPets] = useState([]);
 
     useEffect(() => {
-        async function loadUsers() {
+        async function loadPets() {
             const response = await api.get('/pets')
-            setUsers(response.data);
+            setPets(response.data);
         }
-        loadUsers();
+        loadPets();
     });
 
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.cardsContainer}>
-                { users.map( user => (
-                    <View key={user._id} style={styles.card}>
+                { pets.map( pet => (
+                    <View key={pet._id} style={styles.card}>
                         <View style={styles.footer}>
-                            <Text style={styles.name}>{user.name}</Text>
-                            <Text style={styles.raca}>{user.raca}</Text>
+                            <Text style={styles.name}>{pet.name}</Text>
+                            <Text style={styles.raca}>{pet.raca}</Text>
                         </View>
                     </View>
                 ))}
